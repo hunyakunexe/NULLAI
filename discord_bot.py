@@ -37,8 +37,8 @@ class Bot(discord.Client):
   print('[startup] meintenance task started',flush=True)
   async with self._gakushu_lock:
    try:
-    from startup_meintenance import run as run_startup_meintenance
-    await asyncio.to_thread(run_startup_meintenance, self.cfg)
+    from kido_ijika import run as kido_ijika
+    await asyncio.to_thread(kido_ijika, self.cfg)
     print('[startup] meintenance task finished',flush=True)
    except Exception:
     import traceback

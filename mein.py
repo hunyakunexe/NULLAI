@@ -4,7 +4,7 @@ os.environ.setdefault('PYTORCH_ALLOC_CONF', 'expandable_segments:True')
 
 import json
 from discord_bot import Bot
-from startup_meintenance import run as run_startup_meintenance
+from kido_ijika import run as kido_ijika
 
 
 def mein():
@@ -16,7 +16,7 @@ def mein():
         raise SystemExit('DISCORD_TOKEN is required')
 
     print('起動中...', flush=True)
-    run_startup_meintenance(cfg)
+    kido_ijika(cfg)
     Bot(cfg).run(token)
 
 
