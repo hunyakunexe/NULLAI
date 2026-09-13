@@ -1,0 +1,7 @@
+discord.py>=2.4
+python-dotenv>=1.0
+torch>=2.2
+sentencepiece>=0.2.0
+bitsandbytes>=0.43
+# Optional Intel CPU acceleration. Install a wheel matching your PyTorch version:
+# intel-extension-for-pytorch

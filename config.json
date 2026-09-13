@@ -1,0 +1,129 @@
+{
+  "vocab_size": 32000,
+  "n_embd": 1792,
+  "n_head": 14,
+  "n_layer": 20,
+  "block_size": 512,
+  "dropout": 0.1,
+  "learning_rate": 0.0002,
+  "weight_decay": 0.01,
+  "batch_size": 4,
+  "gradient_accumulation_steps": 8,
+  "epochs_per_update": 1,
+  "gradient_checkpointing": true,
+  "compile_moderu": true,
+  "ddp_static_graph": false,
+  "use_8bit_optimizer": true,
+  "use_multi_gpu": true,
+  "bot": {
+    "auto_reply": false,
+    "reply_only_when_mentioned": true,
+    "max_reply_chars": 1800,
+    "history_messages": 12,
+    "candidate_limit": 16,
+    "observation_delay_seconds": 5,
+    "observation_max_messages": 8,
+    "occasional_reply": true,
+    "occasional_reply_probability": 0.08,
+    "unknown_term_question_probability": 0.3,
+    "ignored_channel_ids": []
+  },
+  "privacy": {
+    "collect_dms": false,
+    "collect_bot_messages": false,
+    "allowed_channel_ids": [],
+    "denied_channel_ids": []
+  },
+  "experience": {
+    "decay_days": 120,
+    "min_confidence": 0.25,
+    "export_score": 0.45,
+    "export_confidence": 0.45
+  },
+  "quality": {
+    "ignore_repeated_messages": true
+  },
+  "dataset": {
+    "auto_fill": true,
+    "min_corpus_chars": 50000000,
+    "max_new_works_per_start": 2000,
+    "download_timeout_seconds": 30,
+    "request_interval_seconds": 0.2,
+    "wikipedia": {
+      "enabled": true,
+      "auto_fetch": false,
+      "dump_url": "https://dumps.wikimedia.org/jawiki/latest/",
+      "max_pages_per_run": 20000,
+      "max_chars": 100000000
+    },
+    "bunsho_bunkatsu_seed_chars": 8000000
+  },
+  "gakushuing": {
+    "auto_gakushu_on_startup": true,
+    "gakushu_every_experiences": 100,
+    "export_every_experiences": 5,
+    "conversation_window": 12,
+    "epochs_per_update": 1,
+    "cache_base_corpus": true,
+    "discord_oversample": 3,
+    "max_pregakushu_chunks_per_update": 8000,
+    "wikipedia_oversample": 1,
+    "warmup_ratio": 0.03,
+    "min_lr_ratio": 0.1,
+    "pregakushu_token_budget": 300000000,
+    "discord_token_budget_per_update": 2000000,
+    "pregakushu_learning_rate": 0.00015,
+    "chat_learning_rate": 4e-05,
+    "cpu_batch_size": 2,
+    "cpu_gradient_accumulation_steps": 16,
+    "replay_chunks": 128,
+    "max_optimizer_steps": 0,
+    "seed": 1337,
+    "resume_optimizer": true,
+    "aozora_weight": 0.3,
+    "wikipedia_weight": 0.7
+  },
+  "inference": {
+    "quantized": true,
+    "max_new_tokens": 96,
+    "temperature": 0.72,
+    "top_k": 40,
+    "repetition_penalty": 1.18,
+    "no_repeat_ngram_size": 3
+  },
+  "ipex": {
+    "enabled": true,
+    "bf16": true,
+    "notes": "Intel CPU: IPEX + oneDNN weight prepack; falls back automatically when IPEX/PyTorch are incompatible.",
+    "weight_prepack": true
+  },
+  "cpu": {
+    "fixed_block_batch": true,
+    "workers": 0,
+    "physical_core_threads": true,
+    "interop_threads": 1,
+    "ampere_like_bf16": true,
+    "notes": "Extreme Intel CPU path: cpuset-aware physical-core threading, IPEX/oneDNN, hardware BF16, contiguous batch slabs, no CPU checkpointing, Inductor fallback only when IPEX is unavailable.",
+    "fast_batch_path": true,
+    "optimizer_foreach": true,
+    "omp_blocktime": 0,
+    "primitive_cache": 32768,
+    "inductor_fallback": true,
+    "batch_order_shuffle": true,
+    "contiguous_batch_slab": true,
+    "bunsho_bunkatsu_workers": 4,
+    "batch_id_shuffle": true,
+    "inductor_mode": "max-autotune",
+    "static_position_ids": true,
+    "batch_size_auto": true,
+    "bf16_master_weights": true
+  },
+  "version": "15-cpu-two-stage-pregakushu",
+  "stages": {
+    "pregakushu_token_budget": 300000000,
+    "aozora_ratio": 0.3,
+    "wikipedia_ratio": 0.7,
+    "discord_token_budget_per_update": 2000000,
+    "force_pregakushu": false
+  }
+}
